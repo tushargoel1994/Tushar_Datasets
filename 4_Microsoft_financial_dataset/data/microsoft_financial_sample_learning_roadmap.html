@@ -1,0 +1,276 @@
+
+<style>
+  .roadmap { padding: 1rem 0; font-family: var(--font-sans); }
+  .section { margin-bottom: 2rem; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; padding-bottom: 8px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .section-label { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: var(--border-radius-md); letter-spacing: 0.04em; }
+  .label-simple { background: #E1F5EE; color: #0F6E56; }
+  .label-stats { background: #EAF3DE; color: #3B6D11; }
+  .label-finance { background: #FAEEDA; color: #854F0B; }
+  .label-resources { background: #EEEDFE; color: #3C3489; }
+  .section-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
+  .task-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; }
+  .task-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 12px 14px; cursor: pointer; transition: border-color 0.15s; }
+  .task-card:hover { border-color: var(--color-border-secondary); }
+  .task-num { font-size: 11px; color: var(--color-text-tertiary); font-weight: 500; margin-bottom: 4px; }
+  .task-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .task-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 8px; }
+  .task-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag { font-size: 10px; padding: 2px 7px; border-radius: 99px; background: var(--color-background-secondary); color: var(--color-text-secondary); border: 0.5px solid var(--color-border-tertiary); }
+  .ask-btn { margin-top: 8px; font-size: 11px; padding: 4px 10px; background: transparent; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); color: var(--color-text-secondary); cursor: pointer; width: 100%; text-align: left; }
+  .ask-btn:hover { background: var(--color-background-secondary); }
+  .resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
+  .resource-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 12px 14px; }
+  .resource-type { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 99px; margin-bottom: 6px; display: inline-block; }
+  .type-kaggle { background: #E6F1FB; color: #185FA5; }
+  .type-blog { background: #FAEEDA; color: #854F0B; }
+  .type-youtube { background: #FCEBEB; color: #A32D2D; }
+  .resource-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+  .resource-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+</style>
+
+<div class="roadmap">
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label label-simple">10 tasks · foundational</span>
+      <span class="section-title">Simple & Exploratory</span>
+    </div>
+    <div class="task-grid">
+
+      <div class="task-card">
+        <div class="task-num">01</div>
+        <div class="task-title">Revenue by segment & country heatmap</div>
+        <div class="task-desc">Pivot Gross Sales by Segment × Country. Identify the top 3 revenue-generating combos and flag underperformers.</div>
+        <div class="task-tags"><span class="tag">pivot</span><span class="tag">segmentation</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Show me Python code to build a Segment x Country revenue heatmap using the Microsoft Financial Sample dataset')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">02</div>
+        <div class="task-title">Monthly revenue trend line</div>
+        <div class="task-desc">Plot Sales by Month Name across years. Spot seasonality peaks and troughs.</div>
+        <div class="task-tags"><span class="tag">time-series</span><span class="tag">seasonality</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Show me Python code to plot monthly revenue trends from the Microsoft Financial Sample data')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">03</div>
+        <div class="task-title">Gross margin % by product</div>
+        <div class="task-desc">Compute (Gross Sales - COGS) / Gross Sales per Product. Rank products by margin efficiency.</div>
+        <div class="task-tags"><span class="tag">margin</span><span class="tag">ranking</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Write Python to compute gross margin % by product from the Microsoft Financial Sample')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">04</div>
+        <div class="task-title">Discount impact waterfall</div>
+        <div class="task-desc">Build a waterfall: Gross Sales → subtract Discounts → arrive at Net Sales. Show by Discount Band.</div>
+        <div class="task-tags"><span class="tag">waterfall</span><span class="tag">discount analysis</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Write Python to create a discount impact waterfall chart using Microsoft Financial Sample data')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">05</div>
+        <div class="task-title">Units sold vs. profit scatter</div>
+        <div class="task-desc">Plot Units Sold on X vs. Profit on Y, color by Segment. Look for volume-profit anomalies.</div>
+        <div class="task-tags"><span class="tag">scatter</span><span class="tag">outlier detection</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Write Python for a Units Sold vs Profit scatter plot colored by Segment from the Microsoft Financial Sample')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">06</div>
+        <div class="task-title">Top 5 / bottom 5 products by profit</div>
+        <div class="task-desc">Group by Product, sum Profit, sort ascending and descending. Present as a bar chart comparison.</div>
+        <div class="task-tags"><span class="tag">ranking</span><span class="tag">bar chart</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python code for top 5 and bottom 5 products by profit using Microsoft Financial Sample')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">07</div>
+        <div class="task-title">YoY growth by segment</div>
+        <div class="task-desc">Compare Sales in Year 1 vs Year 2 per segment. Compute % growth. Flag shrinking segments.</div>
+        <div class="task-tags"><span class="tag">YoY</span><span class="tag">growth rate</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python code to calculate year-over-year sales growth by segment using Microsoft Financial Sample')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">08</div>
+        <div class="task-title">COGS as % of Sales by country</div>
+        <div class="task-desc">COGS/Sales ratio by country surfaces operational cost differences across geographies.</div>
+        <div class="task-tags"><span class="tag">cost efficiency</span><span class="tag">geography</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python code to calculate COGS as a percentage of Sales by country using Microsoft Financial Sample')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">09</div>
+        <div class="task-title">Revenue mix (% of total) donut chart</div>
+        <div class="task-desc">Show each Segment's share of total Gross Sales as a donut. Identify concentration risk.</div>
+        <div class="task-tags"><span class="tag">mix analysis</span><span class="tag">concentration risk</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python code for a revenue mix donut chart by segment from Microsoft Financial Sample')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">10</div>
+        <div class="task-title">Discount band profitability table</div>
+        <div class="task-desc">Group by Discount Band → show avg Sales, avg Profit, avg margin %. Are higher discounts destroying value?</div>
+        <div class="task-tags"><span class="tag">discount strategy</span><span class="tag">profitability</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python code to analyze profitability by discount band using Microsoft Financial Sample')">Generate Python code ↗</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label label-stats">5 tasks · quantitative</span>
+      <span class="section-title">Statistics-Heavy</span>
+    </div>
+    <div class="task-grid">
+
+      <div class="task-card">
+        <div class="task-num">S1</div>
+        <div class="task-title">Regression: price elasticity of demand</div>
+        <div class="task-desc">OLS regression of Units Sold on Sale Price per product. Estimate price elasticity. Flag inelastic products (pricing power).</div>
+        <div class="task-tags"><span class="tag">OLS regression</span><span class="tag">elasticity</span><span class="tag">statsmodels</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Write Python using statsmodels to estimate price elasticity of demand from Microsoft Financial Sample data')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">S2</div>
+        <div class="task-title">ANOVA: does Discount Band significantly affect profit?</div>
+        <div class="task-desc">Run one-way ANOVA across Discount Band groups on Profit. Test if discount tiers produce statistically different profit distributions.</div>
+        <div class="task-tags"><span class="tag">ANOVA</span><span class="tag">hypothesis testing</span><span class="tag">scipy</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python ANOVA test to check if Discount Band significantly affects Profit using Microsoft Financial Sample')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">S3</div>
+        <div class="task-title">Correlation matrix of financial drivers</div>
+        <div class="task-desc">Pearson correlations across Units Sold, Sale Price, Discounts, COGS, Profit. Heatmap + VIF to detect multicollinearity.</div>
+        <div class="task-tags"><span class="tag">correlation</span><span class="tag">multicollinearity</span><span class="tag">VIF</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python correlation matrix and VIF analysis for Microsoft Financial Sample financial drivers')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">S4</div>
+        <div class="task-title">Time-series decomposition of monthly sales</div>
+        <div class="task-desc">Use statsmodels STL decomposition to separate trend, seasonal, and residual components from monthly Sales.</div>
+        <div class="task-tags"><span class="tag">STL decomposition</span><span class="tag">seasonality</span><span class="tag">trend</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python STL decomposition of monthly sales using statsmodels on Microsoft Financial Sample')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">S5</div>
+        <div class="task-title">Monte Carlo simulation of annual profit</div>
+        <div class="task-desc">Sample Units Sold and Sale Price from fitted distributions. Simulate 10,000 annual profit outcomes. Build a P10/P50/P90 range.</div>
+        <div class="task-tags"><span class="tag">Monte Carlo</span><span class="tag">simulation</span><span class="tag">risk range</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python Monte Carlo simulation of annual profit using distributions fitted on Microsoft Financial Sample data')">Generate Python code ↗</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label label-finance">5 tasks · strategic finance</span>
+      <span class="section-title">Finance-Focused (Real CFO Work)</span>
+    </div>
+    <div class="task-grid">
+
+      <div class="task-card">
+        <div class="task-num">F1</div>
+        <div class="task-title">Contribution margin & breakeven analysis</div>
+        <div class="task-desc">CM = Sale Price − Manufacturing Price. Compute breakeven units per product. Build a sensitivity table varying price ±20%.</div>
+        <div class="task-tags"><span class="tag">breakeven</span><span class="tag">contribution margin</span><span class="tag">sensitivity</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python code for contribution margin and breakeven analysis with sensitivity table on Microsoft Financial Sample')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">F2</div>
+        <div class="task-title">Segment P&L waterfall (executive view)</div>
+        <div class="task-desc">For each Segment: Gross Sales → Discounts → Net Sales → COGS → Gross Profit → Profit. Present as a side-by-side waterfall — the standard CFO deck format.</div>
+        <div class="task-tags"><span class="tag">P&L</span><span class="tag">CFO deck</span><span class="tag">waterfall</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python code to build a segment-level P&L waterfall chart in CFO deck style using Microsoft Financial Sample')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">F3</div>
+        <div class="task-title">Portfolio BCG-style matrix</div>
+        <div class="task-desc">Plot Products on a 2×2: X = revenue growth YoY, Y = gross margin %. Size bubbles by Units Sold. Classify Stars / Cash Cows / Dogs.</div>
+        <div class="task-tags"><span class="tag">BCG matrix</span><span class="tag">portfolio strategy</span><span class="tag">bubble chart</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python code to build a BCG-style portfolio matrix from Microsoft Financial Sample data')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">F4</div>
+        <div class="task-title">Discount ROI: revenue lift vs. margin sacrifice</div>
+        <div class="task-desc">For each Discount Band, compute incremental units sold above the None band baseline. Compare revenue lift to margin given up. Did discounting pay off?</div>
+        <div class="task-tags"><span class="tag">discount ROI</span><span class="tag">incremental analysis</span><span class="tag">trade-off</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python code to calculate discount ROI — revenue lift vs margin sacrifice — using Microsoft Financial Sample')">Generate Python code ↗</button>
+      </div>
+
+      <div class="task-card">
+        <div class="task-num">F5</div>
+        <div class="task-title">Revenue forecast with confidence bands (ARIMA)</div>
+        <div class="task-desc">Fit an ARIMA model on monthly Sales. Forecast next 6 months with 80/95% confidence intervals. Present as a planning-grade forecast chart.</div>
+        <div class="task-tags"><span class="tag">ARIMA</span><span class="tag">forecast</span><span class="tag">FP&A</span></div>
+        <button class="ask-btn" onclick="sendPrompt('Python ARIMA forecast with confidence bands on Microsoft Financial Sample monthly sales data')">Generate Python code ↗</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label label-resources">notebooks · blogs · courses</span>
+      <span class="section-title">Recommended Resources</span>
+    </div>
+    <div class="resource-grid">
+
+      <div class="resource-card">
+        <span class="resource-type type-kaggle">Kaggle Notebook</span>
+        <div class="resource-title">Financial Sample EDA by kirtanmehta</div>
+        <div class="resource-desc">Deep-dive EDA with segment/country breakdowns, discount analysis, and profit drivers. Good baseline to fork.</div>
+        <button class="ask-btn" onclick="openLink('https://www.kaggle.com/datasets/atharvaarya25/financials/code')">Browse notebooks on Kaggle ↗</button>
+      </div>
+
+      <div class="resource-card">
+        <span class="resource-type type-kaggle">Kaggle Dataset</span>
+        <div class="resource-title">Microsoft Financials — atharvaarya25</div>
+        <div class="resource-desc">The canonical Kaggle version of the dataset. Has 20+ community notebooks ranging from Power BI dashboards to Python ML models.</div>
+        <button class="ask-btn" onclick="openLink('https://www.kaggle.com/datasets/atharvaarya25/financials')">Open dataset ↗</button>
+      </div>
+
+      <div class="resource-card">
+        <span class="resource-type type-blog">Microsoft Learn</span>
+        <div class="resource-title">Tutorial: From Excel workbook to Power BI</div>
+        <div class="resource-desc">Official Microsoft walkthrough using this exact file to teach Power BI DAX measures, calculated columns, and executive dashboards.</div>
+        <button class="ask-btn" onclick="openLink('https://learn.microsoft.com/en-us/power-bi/connect-data/service-excel-workbook-files')">Open tutorial ↗</button>
+      </div>
+
+      <div class="resource-card">
+        <span class="resource-type type-blog">Towards Data Science</span>
+        <div class="resource-title">Exploratory Data Analysis for Finance with Python</div>
+        <div class="resource-desc">Uses similar financial sample data to demonstrate seaborn, plotly, and pandas-profiling for financial reporting use cases.</div>
+        <button class="ask-btn" onclick="openLink('https://towardsdatascience.com/exploratory-data-analysis-eda-a-practical-guide-and-template-for-structured-data-abfbf3ee3bd9')">Open article ↗</button>
+      </div>
+
+      <div class="resource-card">
+        <span class="resource-type type-youtube">YouTube</span>
+        <div class="resource-title">Power BI Financial Dashboard — Pragmatic Works</div>
+        <div class="resource-desc">Builds a complete executive financial dashboard from this exact file. Covers slicers, drill-through, and KPI cards.</div>
+        <button class="ask-btn" onclick="openLink('https://www.youtube.com/results?search_query=microsoft+financial+sample+power+bi+dashboard')">Search on YouTube ↗</button>
+      </div>
+
+      <div class="resource-card">
+        <span class="resource-type type-blog">GitHub</span>
+        <div class="resource-title">Strategic Finance Python notebooks (various)</div>
+        <div class="resource-desc">Search GitHub for "financial sample xlsx python" — several repos use this dataset to teach FP&A automation, pandas pivot workflows, and matplotlib reporting.</div>
+        <button class="ask-btn" onclick="openLink('https://github.com/search?q=financial+sample+xlsx+python&type=repositories')">Search GitHub ↗</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
